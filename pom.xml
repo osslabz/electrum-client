@@ -56,7 +56,7 @@
         <dependency>
             <groupId>net.osslabz</groupId>
             <artifactId>bitcoin-commons</artifactId>
-            <version>0.2.16</version>
+            <version>0.3.0</version>
         </dependency>
 
         <!-- test dependencies -->
