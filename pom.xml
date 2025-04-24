@@ -4,7 +4,7 @@
 
     <groupId>net.osslabz</groupId>
     <artifactId>electrum-client</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.2.16-SNAPSHOT</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>A Electrum (JSON-RPC) client using JAVA NIO.</description>
@@ -56,7 +56,7 @@
         <dependency>
             <groupId>net.osslabz</groupId>
             <artifactId>bitcoin-commons</artifactId>
-            <version>0.3.0</version>
+            <version>0.2.16</version>
         </dependency>
 
         <!-- test dependencies -->

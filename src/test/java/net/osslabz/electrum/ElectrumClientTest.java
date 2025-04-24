@@ -1,9 +1,9 @@
 package net.osslabz.electrum;
 
 import java.util.List;
+import net.osslabz.bitcoin.Network;
 import net.osslabz.electrum.result.ServerVersion;
 import net.osslabz.electrum.result.TxListEntry;
-import org.bitcoinj.base.BitcoinNetwork;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +15,7 @@ class ElectrumClientTest {
 
     public static void main(String[] args) throws Exception {
 
-        ElectrumClient electrumClient = new ElectrumClient(BitcoinNetwork.MAINNET, "deathgate", 50001);
+        ElectrumClient electrumClient = new ElectrumClient(Network.MAIN_NET, "deathgate", 50001);
         ServerVersion bl = electrumClient.getServerVersion();
 
         log.debug("result {}", bl);
