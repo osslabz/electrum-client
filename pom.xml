@@ -4,7 +4,7 @@
 
     <groupId>net.osslabz</groupId>
     <artifactId>electrum-client</artifactId>
-    <version>0.2.16-SNAPSHOT</version>
+    <version>0.2.17-SNAPSHOT</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>A Electrum (JSON-RPC) client using JAVA NIO.</description>
@@ -17,7 +17,7 @@
         <project.build.sourceEncoding>${osslabz.encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${osslabz.encoding}</project.reporting.outputEncoding>
 
-        <project.build.outputTimestamp>2025-03-18T11:13:39Z</project.build.outputTimestamp>
+        <project.build.outputTimestamp>2025-04-24T08:05:07Z</project.build.outputTimestamp>
 
         <maven.compiler.release>${osslabz.java.version}</maven.compiler.release>
 
