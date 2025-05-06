@@ -15,7 +15,7 @@ class ElectrumClientTest {
 
     public static void main(String[] args) throws Exception {
 
-        ElectrumClient electrumClient = new ElectrumClient(Network.MAIN_NET, "deathgate", 50001);
+        ElectrumClient electrumClient = new ElectrumClient(Network.MAIN_NET, "blockstream.info", 110);
         ServerVersion bl = electrumClient.getServerVersion();
 
         log.debug("result {}", bl);
