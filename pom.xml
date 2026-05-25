@@ -50,7 +50,7 @@
         <dependency>
             <groupId>net.osslabz</groupId>
             <artifactId>json-rpc-client</artifactId>
-            <version>0.0.4</version>
+            <version>0.0.6</version>
         </dependency>
 
         <dependency>
