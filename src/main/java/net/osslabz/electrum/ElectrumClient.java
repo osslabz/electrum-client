@@ -37,9 +37,8 @@ public class ElectrumClient implements Closeable {
 
     public List<TxListEntry> scriptHashGetHistory(String reversedScriptHash) {
 
-        List<TxListEntry> result = this.client.callAndMapList(
+        return this.client.callAndMapList(
                 "blockchain.scripthash.get_history", Collections.singleton(reversedScriptHash), TxListEntry.class);
-        return result;
     }
 
     public ServerVersion getServerVersion() {
