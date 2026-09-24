@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
+// Public API: Jackson fills these fields; dropping them changes the serialized form, getters add API.
+@SuppressWarnings("UnusedVariable")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Notification<T> implements Serializable {
 

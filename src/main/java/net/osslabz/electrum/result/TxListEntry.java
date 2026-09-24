@@ -70,6 +70,8 @@ public class TxListEntry {
         this.additionalProperties.put(name, value);
     }
 
+    // Public non-final class: instanceof would make a subclass instance equal to its parent's.
+    @SuppressWarnings("EqualsGetClass")
     @Override
     public boolean equals(Object o) {
 
