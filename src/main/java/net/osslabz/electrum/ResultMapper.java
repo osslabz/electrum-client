@@ -6,7 +6,6 @@ import java.util.List;
 import net.osslabz.electrum.result.ServerVersion;
 import net.osslabz.jsonrpc.JsonRpcException;
 
-
 public class ResultMapper {
 
     ServerVersion mapToServerVersion(JsonNode jsonNode) {
@@ -21,6 +20,5 @@ public class ResultMapper {
             throw new JsonRpcException("Invalid JSON-RPC Response (string array with 2 elements expected)");
         }
         return new ServerVersion(values.get(0), Double.parseDouble(values.get(1)));
-
     }
 }

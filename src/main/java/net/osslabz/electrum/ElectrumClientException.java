@@ -6,5 +6,4 @@ public class ElectrumClientException extends RuntimeException {
 
         super(e);
     }
-
 }

@@ -7,11 +7,9 @@ import net.osslabz.electrum.result.TxListEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 class ElectrumClientTest {
 
     private static final Logger log = LoggerFactory.getLogger(ElectrumClientTest.class);
-
 
     public static void main(String[] args) throws Exception {
 
@@ -20,7 +18,8 @@ class ElectrumClientTest {
 
         log.debug("result {}", bl);
 
-        List<TxListEntry> txListEntries = electrumClient.addressGetHistory("bc1qe5adquf84x5hss2kwz05f4xy4jglc5ldyjuldt");
+        List<TxListEntry> txListEntries =
+                electrumClient.addressGetHistory("bc1qe5adquf84x5hss2kwz05f4xy4jglc5ldyjuldt");
 
         log.debug("result {}", txListEntries);
 

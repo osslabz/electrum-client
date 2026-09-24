@@ -13,7 +13,6 @@ import net.osslabz.jsonrpc.JsonRpcTcpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 public class ElectrumClient implements Closeable {
 
     private static final Logger log = LoggerFactory.getLogger(ElectrumClient.class);
@@ -24,13 +23,11 @@ public class ElectrumClient implements Closeable {
 
     private final JsonRpcTcpClient client;
 
-
     public ElectrumClient(Network network, String host, int port) {
 
         this.network = network;
         this.client = new JsonRpcTcpClient(host, port);
     }
-
 
     public List<TxListEntry> addressGetHistory(String addr) {
 
@@ -38,13 +35,12 @@ public class ElectrumClient implements Closeable {
         return this.scriptHashGetHistory(reversedScriptHash);
     }
 
-
     public List<TxListEntry> scriptHashGetHistory(String reversedScriptHash) {
 
-        List<TxListEntry> result = this.client.callAndMapList("blockchain.scripthash.get_history", Collections.singleton(reversedScriptHash), TxListEntry.class);
+        List<TxListEntry> result = this.client.callAndMapList(
+                "blockchain.scripthash.get_history", Collections.singleton(reversedScriptHash), TxListEntry.class);
         return result;
     }
-
 
     public ServerVersion getServerVersion() {
 
@@ -52,13 +48,11 @@ public class ElectrumClient implements Closeable {
         return this.resultMapper.mapToServerVersion(result);
     }
 
-
     @Override
     public void close() throws IOException {
 
         this.client.close();
     }
-
 
     public void closeSilently() {
 
