@@ -8,7 +8,7 @@ Electrum Client
 
 A basic Electrum Client for Java/JVM-based languages using JSON-RPC.
 
-0.3.0 is from May 2026, the third release since March 2025, and the only consumer is a private project of mine. Thirteen
+0.3.0 is from May 2026, the third release since March 2025, and the only consumer is a private project of mine. Fourteen
 offline tests, most of them against an in-repo JSON-RPC server, cover the client. One more, tagged `live`, queries a
 public Electrum server and is excluded from the build; run it with `mvn test -Dsurefire.excluded.groups=none`.
 
