@@ -5,6 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.Logger;
+import ch.qos.logback.classic.spi.ILoggingEvent;
+import ch.qos.logback.core.read.ListAppender;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
 import java.net.InetAddress;
@@ -15,9 +19,11 @@ import net.osslabz.bitcoin.Network;
 import net.osslabz.electrum.result.ServerVersion;
 import net.osslabz.electrum.result.TxListEntry;
 import net.osslabz.jsonrpc.JsonRpcException;
+import net.osslabz.jsonrpc.JsonRpcTcpClient;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.slf4j.LoggerFactory;
 
 class ElectrumClientTest {
 
@@ -162,9 +168,28 @@ class ElectrumClientTest {
             unusedPort = socket.getLocalPort();
         }
 
-        assertThrows(
-                JsonRpcException.class,
-                () -> new ElectrumClient(Network.MAIN_NET, server.getHost(), unusedPort).close());
+        Logger jsonRpcLogger = (Logger) LoggerFactory.getLogger(JsonRpcTcpClient.class);
+        ListAppender<ILoggingEvent> jsonRpcLog = new ListAppender<>();
+        jsonRpcLog.start();
+        jsonRpcLogger.addAppender(jsonRpcLog);
+        jsonRpcLogger.setAdditive(false);
+        try {
+            assertThrows(
+                    JsonRpcException.class,
+                    () -> new ElectrumClient(Network.MAIN_NET, server.getHost(), unusedPort).close());
+        } finally {
+            jsonRpcLogger.setAdditive(true);
+            jsonRpcLogger.detachAppender(jsonRpcLog);
+            jsonRpcLog.stop();
+        }
+
+        List<ILoggingEvent> warnings = jsonRpcLog.list.stream()
+                .filter(event -> event.getLevel() == Level.WARN)
+                .toList();
+        assertEquals(1, warnings.size());
+        assertEquals(
+                "Failed to connect to " + server.getHost() + ":" + unusedPort + ": Connection refused",
+                warnings.get(0).getFormattedMessage());
     }
 
     @Test
