@@ -19,7 +19,6 @@ import net.osslabz.bitcoin.Network;
 import net.osslabz.electrum.result.ServerVersion;
 import net.osslabz.electrum.result.TxListEntry;
 import net.osslabz.jsonrpc.JsonRpcException;
-import net.osslabz.jsonrpc.JsonRpcTcpClient;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -168,7 +167,7 @@ class ElectrumClientTest {
             unusedPort = socket.getLocalPort();
         }
 
-        Logger jsonRpcLogger = (Logger) LoggerFactory.getLogger(JsonRpcTcpClient.class);
+        Logger jsonRpcLogger = (Logger) LoggerFactory.getLogger("net.osslabz.jsonrpc");
         ListAppender<ILoggingEvent> jsonRpcLog = new ListAppender<>();
         jsonRpcLog.start();
         jsonRpcLogger.addAppender(jsonRpcLog);
